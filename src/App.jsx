@@ -3,7 +3,9 @@ import ProjectsSidebar from "./components/ProjectsSidebar";
 function App() {
   return (
     <>
-      <ProjectsSidebar/>
+      <main className="h-screen my-8 ">
+        <ProjectsSidebar />
+      </main>
     </>
   );
 }
