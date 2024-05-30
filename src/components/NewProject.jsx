@@ -16,7 +16,7 @@ function NewProject({ onAdd, onCancel }) {
 
     if (
       enteredTitle.trim() === "" ||
-      enteredDescription.trin() === "" ||
+      enteredDescription.trim() === "" ||
       enteredDueDate.trim() === ""
     ) {
       modal.current.open();
