@@ -18,14 +18,11 @@ function ProjectsSidebar({
         {projectList.map((item) => {
           let cssClasses =
             "w-full text-left px-2 py-1 rounded-sm my-1 hover:bg-stone-800 hover:text-stone-200";
-          if (item.id === SelectedProjectId) {
+          if (item.id === selectedProjectId) {
             cssClasses += " bg-stone-800 text-stone-200";
           } else {
             cssClasses += " text-stone-400";
           }
-
-          console.log("selected id: ", selectedProjectId);
-          console.log("item id: ", item.id);
           return (
             <li key={item.id}>
               <button

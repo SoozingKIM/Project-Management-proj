@@ -29,7 +29,6 @@ function App() {
       };
     });
   }
-  console.log(projectsState);
 
   function handleCancel() {
     setProjectsState((prev) => {
@@ -39,11 +38,24 @@ function App() {
       };
     });
   }
+
   function handleStartAddProject() {
     setProjectsState((prev) => {
       return {
         ...prev,
         selectedProjectId: null, //새로운 프로젝트를 추가한다는 뜻
+      };
+    });
+  }
+
+  function handleDeleteProject() {
+    setProjectsState((prev) => {
+      return {
+        ...prev,
+        selectedProjectId: undefined,
+        projects: prev.projects.filter((item) => {
+          return item.id !== prev.selectedProjectId;
+        }),
       };
     });
   }
@@ -54,7 +66,9 @@ function App() {
 
   console.log(selectedProject);
 
-  let content = <SelectedProject project={selectedProject} />;
+  let content = (
+    <SelectedProject project={selectedProject} onDelete={handleDeleteProject} />
+  );
 
   if (projectsState.selectedProjectId === null) {
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancel} />;
