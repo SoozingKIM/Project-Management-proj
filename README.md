@@ -44,3 +44,24 @@ height: 100vh;
 ### mx-auto
 
 **container** 나 **object-contain** 등 컨테이너랑 같이 쓰면, 아이템을 가운데에 배치해줌.
+
+##  문제 해결
+
+> VM1858:1 Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
+
+간단히 말하면  
+리액트의 **_'제어 컴포넌트'_** 와 **_'비제어 컴포넌트'_** 의 차이 때문이다.
+
+```js
+const [enteredTask, setEnteredTask] = useState();
+```
+
+이렇게 초기값을 아무것도 안 설정 해두면 `undefined` 상태이니 **_비제어 컴포넌트_** 라고 생각했는데, `string` 값이 들어오면서 **_제어 컴포넌트_** 가 되어 버리니 경고가 뜬 것이다.
+
+### 해결
+
+```js
+const [enteredTask, setEnteredTask] = useState("");
+```
+
+초기값을 `string`으로 해주어 `undefined` 상태를 피하면 된다.
